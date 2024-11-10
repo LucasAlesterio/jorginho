@@ -5,19 +5,21 @@ import { SocketServer } from "./api/SocketServer";
 
 const port = parseInt(process.env.PORT || "3000", 10);
 const dev = process.env.NODE_ENV !== "production";
-const app = next({ dev });
+const hostname = "localhost";
+const app = next({ dev, hostname, port });
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
-  const server = createServer((req, res) => {
-    const parsedUrl = parse(req.url!, true);
-    handle(req, res, parsedUrl);
-  }).listen(port);
+  const server = createServer(handle);
+
   const socketServer = new SocketServer(server);
   socketServer.start();
 
-  console.log(
-    `> 🔥 Server listening at http://localhost:${port} as ${dev ? "development" : process.env.NODE_ENV
-    }`,
-  );
+  server.listen(port, () => {
+    console.log(
+      `> 🔥 Server listening at http://localhost:${port} as ${dev ? "development" : process.env.NODE_ENV
+      }`,
+    );
+  });
+
 });
