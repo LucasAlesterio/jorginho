@@ -1,11 +1,5 @@
 import { Server } from "socket.io";
 import { Server as HttpServer } from 'http';
-import { CreatePlayerUseCase } from "./useCases/game/CreatePlayer/CreatePlayerUserCase";
-import { GameServer } from "./GameServer";
-import { RemovePlayerUseCase } from "./useCases/game/RemovePlayer/RemovePlayerUseCase";
-import { CreateRoomUseCase } from "./useCases/game/CreateRoom/CreateRoomUseCase";
-import { JoinRoomUseCase } from "./useCases/game/JoinRoom/JoinRoomUseCase";
-import { DisconnectUseCase } from "./useCases/game/Disconnect/DisconnectUseCase";
 import jogoDaVelha from "./games/jogoDaVelha";
 
 export class SocketServer {
