@@ -1,5 +1,11 @@
+import { Socket } from "socket.io-client";
 import { io } from "socket.io-client";
 
-export const socket = io("http://localhost:3000", {
-  path: "/socket.io/",
-});
+export class SocketClient {
+  static start(namespace: string): Socket {
+    const socket = io(`/${namespace}`, {
+      path: "/socket.io/",
+    });
+    return socket;
+  }
+}

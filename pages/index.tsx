@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <ul>
       <li>
-        <Link href="/a">/a (Pages Router)</Link>
+        <Link href="/jogo-da-velha">Jogo da velha</Link>
       </li>
       <li>
         <Link href="/b">b (App Router)</Link>
