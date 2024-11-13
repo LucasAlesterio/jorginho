@@ -7,7 +7,7 @@ export class SocketClient {
       ? `https://${window.location.host}`
       : "http://localhost:3000";
     const socket = io(`${URL}/${namespace}`, {
-      path: "/socket.io/",
+      transports: ['websocket'],
     });
     return socket;
   }
